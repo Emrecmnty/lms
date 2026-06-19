@@ -196,8 +196,7 @@ export default function Users() {
                   </td>
                   <td style={{ color: 'var(--on-surface-variant)' }}>{user.email}</td>
                   <td style={{ color: 'var(--on-surface-variant)' }}>{user.phone || '-'}</td>
-                  
-                  {/* GÜNCELLENDİ: Duruma göre dinamik renk alan rozet */}
+
                   <td>
                     <span 
                       style={{
