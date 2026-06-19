@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  /* Renkler (DESIGN.md Tokens) */
+  --primary: #000613;
+  --primary-container: #001f3f;
+  --on-primary: #ffffff;
+  --secondary: #0058be;
+  --background: #f8f9fa;
+  --surface-lowest: #ffffff;
+  --surface-low: #f3f4f5;
+  --on-surface: #191c1d;
+  --on-surface-variant: #43474e;
+  --outline-variant: #c4c6cf;
+  
+  /* Status (Badge) Renkleri */
+  --badge-active-bg: #dcfce7;
+  --badge-active-text: #15803d;
+  --badge-suspended-bg: #fee2e2;
+  --badge-suspended-text: #b91c1c;
+  --badge-pending-bg: #fef9c3;
+  --badge-pending-text: #a16207;
+
+  /* Düzen ve Ölçüler */
+  --sidebar-width: 260px;
+  --container-max: 1280px;
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--on-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- GENEL DÜZEN (LAYOUT) --- */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- SOL MENÜ (SIDEBAR) --- */
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--primary);
+  color: var(--on-primary);
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  border-right: 1px solid var(--outline-variant);
+  z-index: 50;
+}
+
+.sidebar-header {
+  padding: 0 24px 40px 24px;
+}
+
+.sidebar-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.sidebar-header p {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--on-primary);
+}
+
+.nav-item.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--on-primary);
+  border-left: 4px solid var(--secondary);
+  padding-left: 20px; /* Kenarlık bindiği için eşitleme */
+}
+
+.sidebar-footer {
+  padding: 0 16px;
+  margin-top: auto;
+}
+
+.user-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+/* --- SAĞ İÇERİK ALANI --- */
+.main-wrapper {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-header {
+  height: 64px;
+  background-color: var(--surface-lowest);
+  border-bottom: 1px solid var(--outline-variant);
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--surface-low);
+  padding: 8px 16px;
+  border-radius: 999px;
+  width: 384px;
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  outline: none;
+  margin-left: 8px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.content-area {
+  padding: 32px;
+  max-width: var(--container-max);
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* --- BİLEŞENLER VE TABLOLAR --- */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+
+.page-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.page-header p {
+  color: var(--on-surface-variant);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.btn-primary {
+  background-color: var(--primary-container);
+  color: var(--on-primary);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Bento İstatistik Grid Yapısı */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background-color: var(--surface-lowest);
+  border: 1px solid var(--outline-variant);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.stat-card-value {
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* Veri Tablosu Kartı */
+.data-table-container {
+  background-color: var(--surface-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.table-title-bar {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--outline-variant);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: var(--surface-low);
+  padding: 16px 24px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.data-table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--outline-variant);
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover {
+  background-color: var(--surface-low);
+}
+
+/* Tasarımdaki Durum Rozetleri (Badges) */
+.badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.badge.active { background-color: var(--badge-active-bg); color: var(--badge-active-text); }
+.badge.suspended { background-color: var(--badge-suspended-bg); color: var(--badge-suspended-text); }
+.badge.pending { background-color: var(--badge-pending-bg); color: var(--badge-pending-text); }
+
+/* Avatar Çemberi */
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-container);
+  color: var(--on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name-title {
+  font-weight: 600;
+  color: var(--on-surface);
+}
+
+.user-meta-sub {
+  font-size: 12px;
+  color: var(--on-surface-variant);
+  margin-top: 2px;
+}
