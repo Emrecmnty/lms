@@ -16,21 +16,16 @@ export default function Dashboard() {
       setLoading(true);
       setError(null);
       
-      // Tüm verileri aynı anda çekiyoruz
       const [books, users, transactions] = await Promise.all([
         api.getBooks().catch(() => []),
         api.getUsers().catch(() => []),
         api.getActiveTransactions().catch(() => [])
       ]);
-
-      // İstatistikleri hesapla
       setStats({
         totalBooks: books.length,
         totalUsers: users.length,
         activeBorrows: transactions.length
       });
-
-      // Sadece en son yapılan 5 işlemi göster (Geçmişten günümüze sıralıysa tersine çevirip alıyoruz)
       setRecentTransactions(transactions.slice(0, 5));
 
     } catch (err) {

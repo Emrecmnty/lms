@@ -14,7 +14,7 @@ const sequelize = new Sequelize(
   }
 );
 
-// Modelleri yükleme
+
 const User = require('./User')(sequelize);
 const Book = require('./Book')(sequelize);
 const Transaction = require('./Transaction')(sequelize);
@@ -30,11 +30,10 @@ Book.hasMany(Transaction, { foreignKey: 'bookId', onDelete: 'RESTRICT' });
 Transaction.belongsTo(Book, { foreignKey: 'bookId' });
 
 // 3. Kullanıcı - Kitap Çoka Çok İlişkisi (N:M)
-// YENİ: unique: false ekleyerek "aynı kitabı sadece bir kez alabilir" kuralını yıktık!
 User.belongsToMany(Book, { through: Transaction, foreignKey: 'userId', unique: false });
 Book.belongsToMany(User, { through: Transaction, foreignKey: 'bookId', unique: false });
 
-// Veritabanı nesnesini ve modelleri dışa aktarıyoruz
+
 module.exports = {
   sequelize,
   User,

@@ -25,7 +25,6 @@ const createUser = async (req, res) => {
     const newUser = await userService.createUser(req.body);
     res.status(201).json(newUser);
   } catch (error) {
-    // YENİ EKLENEN SATIR: Hatayı arka planda tüm çıplaklığıyla yazdıracak
     console.error("GİZLİ HATA DETAYI:", error.errors || error); 
     
     res.status(400).json({ error: error.message });

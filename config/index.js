@@ -2,13 +2,11 @@
 require('dotenv').config();
 
 const config = {
-  // Sunucu yapılandırması
   app: {
     port: process.env.PORT || 5001,
     env: process.env.NODE_ENV || 'development',
   },
   
-  // PostgreSQL veritabanı yapılandırması
   database: {
     dialect: process.env.DB_DIALECT || 'postgres',
     host: process.env.DB_HOST || 'localhost',
@@ -19,7 +17,6 @@ const config = {
     logging: process.env.NODE_ENV === 'development' ? console.log : false,
   },
 
-  // Güvenlik anahtarları
   security: {
     jwtSecret: process.env.JWT_SECRET || 'varsayilan_gizli_anahtar',
   }

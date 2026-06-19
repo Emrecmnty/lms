@@ -27,8 +27,6 @@ export default function Sidebar() {
           </NavLink>
         ))}
       </nav>
-
-      {/* ALT KISIM: Tıklanabilir Profil Butonu */}
       <div className="sidebar-footer">
         <Link to="/profile" style={{ textDecoration: 'none', display: 'block' }}>
           <div 

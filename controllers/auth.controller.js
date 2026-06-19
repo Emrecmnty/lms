@@ -12,7 +12,7 @@ exports.login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(401).json({ error: 'Hatalı şifre girdiniz.' });
 
-    // 'gizliAnahtar123' kısmı sistemin imzasını taşır
+  
     const token = jwt.sign({ id: user.id, email: user.email }, 'gizliAnahtar123', { expiresIn: '1d' });
 
     res.json({

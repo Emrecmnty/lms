@@ -23,7 +23,7 @@ const borrowBook = async (req, res) => {
 
 const returnBook = async (req, res) => {
   try {
-    // POST işlemi olduğu için transactionId'yi body'den bekliyoruz
+   
     const { transactionId } = req.body; 
     const transaction = await transactionService.returnBook(transactionId);
     res.status(200).json(transaction);

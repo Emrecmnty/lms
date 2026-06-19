@@ -13,14 +13,12 @@ export default function Login({ onLoginSuccess }) {
     setLoading(true);
 
     try {
-      // API üzerinden backend'e giriş isteği atıyoruz
+
       const data = await api.login({ email, password });
-      
-      // Başarılı olursa, backend'den gelen bileti (token) tarayıcının hafızasına kaydediyoruz
+
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
       
-      // Ana uygulamaya "Giriş yapıldı, kilitleri aç" mesajı gönderiyoruz
       onLoginSuccess();
     } catch (err) {
       setError(err.message);

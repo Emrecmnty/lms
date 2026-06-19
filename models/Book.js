@@ -24,11 +24,10 @@ module.exports = (sequelize) => {
       defaultValue: 'Available', 
       allowNull: false
     },
-    // YENİ EKLENEN ALAN: Kitabın hangi rafta olduğunu tutar
     shelf: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 'A-1' // Eğer raf belirtilmezse varsayılan olarak A-1 rafı atanır
+      defaultValue: 'A-1' 
     }
   }, {
     timestamps: true,

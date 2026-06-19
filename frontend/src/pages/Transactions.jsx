@@ -49,7 +49,6 @@ export default function Transactions() {
       return;
     }
     
-    // YENİ: Tarih alanını kontrol edip, boşsa backend'e 'null' gönderiyoruz
     const dataToSend = {
       userId: formData.userId,
       bookId: formData.bookId,
@@ -57,7 +56,6 @@ export default function Transactions() {
     };
 
     try {
-      // formData yerine dataToSend'i gönderiyoruz
       await api.borrowBook(dataToSend);
       
       setIsModalOpen(false);
@@ -92,12 +90,9 @@ export default function Transactions() {
     (b.shelf && b.shelf.toLowerCase().includes(bookSearch.toLowerCase()))
   );
 
-  // --- İŞTE O BAHSETTİĞİM 2. ADIMIN MANTIĞI BURADA ---
-  // Bugünün tarihini alıp saatlerini sıfırlıyoruz ki doğru karşılaştırma yapalım
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  // Elimizdeki işlemleri iki ayrı listeye ayırıyoruz
   const overdueTransactions = transactions.filter(tx => tx.dueDate && new Date(tx.dueDate) < today);
   const activeTransactions = transactions.filter(tx => !tx.dueDate || new Date(tx.dueDate) >= today);
 
@@ -124,8 +119,6 @@ export default function Transactions() {
         </button>
       </div>
 
-      {/* --- GECİKEN KİTAPLAR İÇİN KIRMIZI TABLO --- */}
-      {/* Sadece geciken kitap varsa ekranda görünür */}
       {overdueTransactions.length > 0 && (
         <div style={{ marginBottom: '32px' }}>
           <h2 style={{ fontSize: '18px', color: '#dc2626', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
@@ -170,7 +163,6 @@ export default function Transactions() {
         </div>
       )}
 
-      {/* --- SÜRESİ DEVAM EDENLER İÇİN NORMAL BEYAZ TABLO --- */}
       <div>
         <h2 style={{ fontSize: '18px', color: '#111827', marginBottom: '12px' }}>Aktif Kiralamalar</h2>
         <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #e5e7eb', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
@@ -220,7 +212,7 @@ export default function Transactions() {
         </div>
       </div>
 
-      {/* --- KİTAP ÖDÜNÇ VERME EKRANI (MODAL) --- */}
+    
       {isModalOpen && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
           <div style={{ backgroundColor: '#ffffff', padding: '32px', borderRadius: '16px', width: '100%', maxWidth: '500px', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)' }}>

@@ -16,11 +16,10 @@ export default function Topbar({ onLogout }) {
       top: 0,
       zIndex: 10
     }}>
-      
-      {/* Sağ Taraf: Profil ve Çıkış Butonu */}
+
       <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
         
-        {/* Kullanıcı Profili */}
+    
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div style={{ textAlign: 'right' }}>
             <p style={{ fontSize: '14px', fontWeight: '600', color: 'var(--on-surface)', margin: 0 }}>{user.fullName}</p>
@@ -31,7 +30,7 @@ export default function Topbar({ onLogout }) {
           </div>
         </div>
 
-        {/* Çıkış Yap Butonu */}
+  
         <button 
           onClick={onLogout} 
           style={{ 

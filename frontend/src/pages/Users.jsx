@@ -8,7 +8,6 @@ export default function Users() {
   const [editingUserId, setEditingUserId] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   
-  // GÜNCELLENDİ: Form datasına 'status' alanı eklendi
   const [formData, setFormData] = useState({ fullName: '', email: '', phone: '', status: 'Active' });
 
   const fetchUsers = () => {
@@ -29,7 +28,6 @@ export default function Users() {
   }, []);
 
   const handleEditClick = (user) => {
-    // GÜNCELLENDİ: Düzenlerken mevcut statüyü de çekiyoruz
     setFormData({ 
       fullName: user.fullName, 
       email: user.email, 
@@ -122,7 +120,6 @@ export default function Users() {
               onChange={(e) => setFormData({...formData, phone: e.target.value})}
               style={{ flex: 1, minWidth: '150px', padding: '10px 16px', borderRadius: '8px', border: '1px solid var(--outline-variant)' }}
             />
-            {/* YENİ: Durum Seçme Açılır Listesi */}
             <select
               value={formData.status}
               onChange={(e) => setFormData({...formData, status: e.target.value})}
@@ -138,7 +135,6 @@ export default function Users() {
         </form>
       )}
 
-      {/* İstatistikler */}
       <div className="stats-grid">
         <div className="stat-card">
           <p className="stat-card-title">Total Members</p>

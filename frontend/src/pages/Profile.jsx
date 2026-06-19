@@ -21,9 +21,6 @@ export default function Profile() {
       setMessage({ type: 'error', text: 'Yeni şifreler birbiriyle eşleşmiyor!' });
       return;
     }
-
-    // Not: Şimdilik sadece Frontend görseli hazır. 
-    // Gerçekten değişmesi için Backend'e küçük bir api.changePassword() rotası eklememiz gerekecek.
     setMessage({ type: 'success', text: 'Şifreniz başarıyla güncellendi (Simülasyon).' });
     setPasswords({ current: '', new: '', confirm: '' });
   };
@@ -33,8 +30,7 @@ export default function Profile() {
       <h1 style={{ fontSize: '24px', margin: '0 0 24px 0', color: '#111827', fontWeight: 'bold' }}>Profil Ayarları</h1>
 
       <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
-        
-        {/* KULLANICI BİLGİLERİ KARTI */}
+   
         <div style={{ flex: '1 1 300px', backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #e5e7eb', padding: '24px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
           <h2 style={{ fontSize: '18px', color: '#111827', marginTop: 0, marginBottom: '20px', borderBottom: '1px solid #e5e7eb', paddingBottom: '12px' }}>Hesap Detayları</h2>
           
@@ -55,8 +51,6 @@ export default function Profile() {
             </div>
           </div>
         </div>
-
-        {/* ŞİFRE DEĞİŞTİRME KARTI */}
         <div style={{ flex: '2 1 400px', backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #e5e7eb', padding: '24px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
           <h2 style={{ fontSize: '18px', color: '#111827', marginTop: 0, marginBottom: '20px', borderBottom: '1px solid #e5e7eb', paddingBottom: '12px' }}>Güvenlik / Şifre Değiştir</h2>
           
